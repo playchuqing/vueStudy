@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1 v-once>{{msg}}</h1>
+        <h1 v-cloak>{{msg}}</h1>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        setTimeout(() => {
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        msg: "1772295887"
+                    }
+                }
+            }).mount("#app");
+        }, 1000)
+    </script>
+</body>
+
+</html>
