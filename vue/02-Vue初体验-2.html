@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>{{books[0]}}</li>
+            <li>{{books[1]}}</li>
+            <li>{{books[2]}}</li>
+        </ul>
+        <p>-----------------------</p>
+        <ul>
+            <li v-for="book in books">{{book}}</li>
+        </ul>
+    </div>
+
+    <script>
+        const applist = {
+            data() {
+                return {
+                    books: ["历史书", "语文书", "数学书"],
+                }
+            }
+        };
+
+        const vue = Vue.createApp(applist).mount("#app");
+    </script>
+</body>
+
+</html>

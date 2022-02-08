@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        ul li {
+            text-decoration: none;
+            list-style: none;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>搜索列表</h3>
+        <label for="">
+            <input type="text" placeholder="请输入搜索的姓名" v-model="searchStr">
+        </label>
+        <h3>排序</h3>
+        <button @click="setOrderType(2)">年龄升序</button>
+        <button @click="setOrderType(1)">年龄降序</button>
+        <button @click="setOrderType(0)">还原</button>
+        <ul>
+            <li v-for="(p, index) in filterPersons">
+                {{index+1}}.姓名:{{p.name}}-性别:{{p.sex}}-年龄:{{p.age}}-联系手机:{{p.phone}}
+            </li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    persons: [{
+                            name: '张三',
+                            sex: '男',
+                            age: 17,
+                            phone: '13719865599'
+                        }, {
+                            name: '啊好',
+                            sex: '女',
+                            age: 19,
+                            phone: '1365865599'
+                        }, {
+                            name: '鹏三',
+                            sex: '男',
+                            age: 19,
+                            phone: '137197525599'
+                        }, {
+                            name: '扎暗',
+                            sex: '男',
+                            age: 15,
+                            phone: '137195666599'
+                        }, {
+                            name: '斌全',
+                            sex: '男',
+                            age: 15,
+                            phone: '126984248899'
+                        }, {
+                            name: '盘东',
+                            sex: '男',
+                            age: 16,
+                            phone: '137198645989'
+                        }, {
+                            name: '李新',
+                            sex: '女',
+                            age: 22,
+                            phone: '137198774882'
+                        }, {
+                            name: '破秀',
+                            sex: '女',
+                            age: 32,
+                            phone: '11128492255'
+                        }, {
+                            name: '承带',
+                            sex: '女',
+                            age: 15,
+                            phone: '13719855412'
+                        }, {
+                            name: '大萨',
+                            sex: '男',
+                            age: 36,
+                            phone: '13719867889'
+                        }, {
+                            name: '数答',
+                            sex: '女',
+                            age: 25,
+                            phone: '13719864519'
+                        }, {
+                            name: '迷是',
+                            sex: '男',
+                            age: 26,
+                            phone: '13789865599'
+                        }, {
+                            name: '扣呢',
+                            sex: '男',
+                            age: 28,
+                            phone: '19852865599'
+                        }, {
+                            name: '老弟',
+                            sex: '女',
+                            age: 17,
+                            phone: '13619865119'
+                        }, {
+                            name: '王顺',
+                            sex: '男',
+                            age: 11,
+                            phone: '15965565549'
+                        }, {
+                            name: '赵江',
+                            sex: '女',
+                            age: 10,
+                            phone: '14637665599'
+                        }, {
+                            name: '蟾订',
+                            sex: '男',
+                            age: 13,
+                            phone: '11188365599'
+                        }, {
+                            name: '非木',
+                            sex: '女',
+                            age: 30,
+                            phone: '13744265599'
+                        }, {
+                            name: '木飞',
+                            sex: '女',
+                            age: 22,
+                            phone: '1312365599'
+                        }, {
+                            name: '玲玲',
+                            sex: '男',
+                            age: 51,
+                            phone: '1300065599'
+                        }]
+                        //关联输入框
+                        ,
+                    searchStr: '',
+                    //flag:0:默认 1:升序 2:降序
+                    orderType: 0
+                }
+            },
+            computed: {
+                filterPersons() {
+                    //1.取出相关的属性
+                    const {
+                        persons,
+                        searchStr,
+                        orderType
+                    } = this;
+                    // 2.定义过滤数组
+                    let arr = [...persons];
+                    // 3.根据条件过滤
+                    if (searchStr.trim()) {
+                        arr = persons.filter((p) => {
+                            return p.name.indexOf(searchStr) !== -1;
+                        });
+                    }
+                    //4.排序
+                    if (orderType) {
+                        arr.sort((p1, p2) => {
+                            console.log(p1, p2);
+                            if (orderType === 1) {
+                                //降序
+                                return p2.age - p1.age;
+                            } else {
+                                //升序
+                                return p1.age - p2.age;
+                            }
+                        })
+                    }
+                    //5.反回过滤后的数组
+                    return arr;
+                }
+            },
+            methods: {
+                setOrderType(orderType) {
+                    this.orderType = orderType;
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

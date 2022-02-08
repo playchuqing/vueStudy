@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>会员总积分:{{totalScore}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    members: [{
+                        id: 'LK001',
+                        name: 'li',
+                        score: 129366
+                    }, {
+                        id: 'LK001',
+                        name: 'ss',
+                        score: 123527
+                    }, {
+                        id: 'LK001',
+                        name: 'aa',
+                        score: 195511
+                    }, {
+                        id: 'LK001',
+                        name: 'bb',
+                        score: 123545
+                    }]
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+                totalScore() {
+                    let total = 0;
+                    for (let member of this.members) {
+                        total += member.score;
+                    }
+                    return total;
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

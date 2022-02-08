@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box-c {
+            text-align: center;
+        }
+        
+        .box-r {
+            text-align: right;
+        }
+        
+        .box-l {
+            text-align: left;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        .blue {
+            color: blue;
+        }
+        
+        .yellow {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class="box" :class="getClass()">Vue手册</p>
+        <button @click="red">红色</button>
+        <button @click="blue">蓝色</button>
+        <button @click="yellow">黄色</button>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    box: 'box-c',
+                    b1: true,
+                    b2: false,
+                    b3: false
+                }
+            },
+            methods: {
+                getClass() {
+                    return [this.box, {
+                        red: this.b1,
+                        blue: this.b2,
+                        yellow: this.b3
+                    }];
+                },
+                red() {
+                    this.b1 = true;
+                    this.b2 = false
+                    this.b3 = false;
+                    this.box = 'box-l';
+                },
+                blue() {
+                    this.b1 = false;
+                    this.b2 = true
+                    this.b3 = false;
+                    this.box = 'box-c';
+                },
+                yellow() {
+                    this.b1 = false;
+                    this.b2 = false
+                    this.b3 = true;
+                    this.box = 'box-r';
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

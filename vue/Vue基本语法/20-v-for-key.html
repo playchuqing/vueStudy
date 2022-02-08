@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="a" placeholder="添加到第几条后面">
+            <label for="">
+                ID:<input type="text" v-model="id">
+            </label>
+            <label for="">
+                name:<input type="text" v-model="name">
+            </label>
+            <button @click="add()">添加</button>
+        </div>
+        <p>==============================</p>
+        <ul>
+            <!-- 插入数据到前面或者中间的时候，key是避免一些错误 -->
+            <li v-for="(item,index) in listArr" :key="item.id">
+                <input type="checkbox">{{index+1}}>> {{item.id}}------{{item.name}}
+            </li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    a: '',
+                    id: '',
+                    name: '',
+                    listArr: [{
+                        id: 1,
+                        name: '张三'
+                    }, {
+                        id: 2,
+                        name: '张四'
+                    }, {
+                        id: 3,
+                        name: '张五'
+                    }, {
+                        id: 4,
+                        name: '张六'
+                    }, {
+                        id: 5,
+                        name: '张七'
+                    }]
+                }
+            },
+            methods: {
+                add() {
+                    //尾部追加
+                    // this.listArr.push({
+                    //     id: this.id,
+                    //     name: this.name
+                    // });
+                    //头部追加
+                    // this.listArr.unshift({
+                    //     id: this.id,
+                    //     name: this.name
+                    // });
+                    //中间追加
+                    this.listArr.splice(this.a, 0, {
+                        id: this.id,
+                        name: this.name
+                    });
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ff0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 点击冒泡 -->
+        <!-- 阻止冒泡第一种方法 -->
+        <div class="box" @click="boxclick">
+            <button @click.stop="btnclick">{{text}}</button>
+        </div>
+        <!-- 阻止默认时间 -->
+        <form action="http://baidu.com">
+            <!-- <input type="submit" value="点击" @click="dosubmit"> -->
+            <!-- 第一种方法 -->
+            <input type="submit" value="点击" @click.prevent="dosubmit">
+        </form>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    text: "button"
+                }
+            },
+            methods: {
+                boxclick() {
+
+                    console.log("点击了box");
+                },
+                btnclick(event) {
+                    // 第二种
+                    // event.stopPropagation();
+                    console.log("点击了button");
+                },
+                dosubmit(event) {
+                    // 第二种方法
+                    // event.preventDefault();
+                    console.log("点击了提交");
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in persons">{{item}}</li>
+        </ul>
+        <p>==============</p>
+        <ul>
+            <li v-for="(item,key,index) in persons">{{index+1}}-{{key}}-{{item}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    persons: {
+                        name: '小初',
+                        age: '1',
+                        like: [
+                            "唱歌", "跳舞", "打篮球"
+                        ]
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

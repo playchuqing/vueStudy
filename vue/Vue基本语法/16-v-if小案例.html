@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>v-if</h1>
+        <!-- 登录方式切换 手机登录/邮箱登录 -->
+        <div v-if="loginType==='phone'">
+            <!-- 手机登录 -->
+            <label for="">手机号码</label>
+            <input type="text" placeholder="请输入手机号码">
+            <br/>
+            <label for="">密码</label>
+            <input type="text" placeholder="请输入密码">
+        </div>
+        <div v-else>
+            <!-- 邮箱登录 -->
+            <label for="">邮箱</label>
+            <input type="text" placeholder="请输入邮箱">
+            <br/>
+            <label for="">密码</label>
+            <input type="text" placeholder="请输入密码">
+        </div>
+        <h1>v-show</h1>
+        <!-- 登录方式切换 手机登录/邮箱登录 -->
+        <div v-show="loginType==='phone'">
+            <!-- 手机登录 -->
+            <label for="">手机号码</label>
+            <input type="text" placeholder="请输入手机号码">
+            <br/>
+            <label for="">密码</label>
+            <input type="text" placeholder="请输入密码">
+        </div>
+        <div v-show="loginType==='email'">
+            <!-- 邮箱登录 -->
+            <label for="">邮箱</label>
+            <input type="text" placeholder="请输入邮箱">
+            <br/>
+            <label for="">密码</label>
+            <input type="text" placeholder="请输入密码">
+        </div>
+        <button @click="check()">切换登录方式</button>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    loginType: "phone" //email
+                }
+            },
+            methods: {
+                check() {
+                    this.loginType === "phone" ? this.loginType = "email" : this.loginType = "phone";
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

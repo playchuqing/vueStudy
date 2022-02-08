@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{getfullName()}}</p>
+        <p>---------------------</p>
+        <p>{{fullName}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    firstName: '乔治',
+                    lastName: '佩奇'
+                }
+            },
+            methods: {
+                getfullName() {
+                    return this.firstName + '·' + this.lastName;
+                }
+            },
+            computed: {
+                fullName() {
+                    return this.firstName + '·' + this.lastName;
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
