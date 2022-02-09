@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- -------单个绑定----- -->
+        <h1>单个绑定</h1>
+        <label for="a">
+            <input id="a" type="checkbox" v-model="isAgree">同意会员协议
+        </label>
+        <h2>是否同意协议:{{isAgree?'同意':'不同意'}}</h2>
+        <button :disabled="!isAgree">注册</button>
+        <!-- ---------多个绑定-------- -->
+        <br>
+        <h1>多个绑定</h1>
+
+        <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+        <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        <input type="checkbox" value="篮球" v-model="hobbies">篮球
+        <h5>选择的运动类型:{{hobbies}}</h5>
+        <!----------值个绑定--------  -->
+        <h1>值个绑定</h1>
+        <label v-for="star in stars" :for="star">
+            <input type="checkbox" :value="star" v-model="likes" :id="star">{{star}}
+        </label>
+        <h1>{{likes}}</h1>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isAgree: true,
+                    hobbies: [],
+                    stars: ['李大钊', '刘德华', '王福'],
+                    likes: []
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

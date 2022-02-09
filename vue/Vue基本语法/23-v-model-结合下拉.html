@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>选择所在的城市:</p>
+        <select name="" id="" v-model="city">
+            <option value="上海">上海</option>
+            <option value="北京">北京</option>
+            <option value="南京">南京</option>
+        </select>
+        <p>选择的城市是:{{city}}</p>
+
+        <h1>------------</h1>
+        <p>选择所在的城市:</p>
+        <!-- multiple -->
+        <select name="" id="" v-model="cities" multiple>
+            <option value="上海">上海</option>
+            <option value="北京">北京</option>
+            <option value="南京">南京</option>
+        </select>
+        <p>选择的城市是:{{cities}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    city: '北京',
+                    cities: []
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
